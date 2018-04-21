@@ -8,7 +8,7 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 
 // Extra credit for exceeds rating: 
 // calls the printQuote function every 30 seconds.
-setInterval(printQuote, 30000);
+var myTimer = setInterval(printQuote, 30000);
 
 // Returns a random quote object from the array 'quotes' in quotes.js
 function getRandomQuote() {
@@ -41,6 +41,9 @@ function changeColorPage() {
 
 // Prints a random quote when clicked on button or when called by setInterval, and also calls the changeColorPage function to change the background color of the page.
 function printQuote() {
+  clearInterval(myTimer);
+  myTimer = setInterval(printQuote, 30000);
+
   // changing color of page and button
   changeColorPage();
 
