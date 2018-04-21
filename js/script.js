@@ -9,11 +9,23 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 // Extra credit for exceeds rating: 
 // calls the printQuote function every 30 seconds.
 var myTimer = setInterval(printQuote, 30000);
+var quotesToDisplay = [];
 
 // Returns a random quote object from the array 'quotes' in quotes.js
 function getRandomQuote() {
-  var quote = Math.floor(Math.random() * quotes.length);
-  return quotes[quote];
+  if (quotesToDisplay.length === 0) {
+    quotesToDisplay = [...quotes];
+  }
+
+  var randomIndex = Math.floor(Math.random() * quotesToDisplay.length);
+  var quote = quotesToDisplay[randomIndex];
+
+  if (quotesToDisplay.length !== 0) {
+    var quoteRemoved = quotesToDisplay.splice(randomIndex, 1);
+    console.log(quoteRemoved);
+  }
+
+  return quote;
 }
 
 // Extra credit for exceeds rating: 
