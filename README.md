@@ -1,6 +1,6 @@
 # Random Quote Generator
 
-#### Project 9
+#### Project 1
 
 ###### This is my first of twelve projects for the Techdegree Full Stack JavaScript.
 
