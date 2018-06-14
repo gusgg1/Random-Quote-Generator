@@ -1,5 +1,9 @@
 # Random Quote Generator
 
+#### Project 9
+
+###### This is my first of twelve projects for the Techdegree Full Stack JavaScript.
+
 * This generator has been written *without* jQuery.
 * Added a tags property to categorise quotes.
 * When the quote changes, the background color of the page randomly changes.
