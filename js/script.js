@@ -4,47 +4,40 @@
 // See quotes.js to find the data (array of objects called quotes).
 
 
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
 // Extra credit for exceeds rating: 
-// calls the printQuote function every 30 seconds.
-var myTimer = setInterval(printQuote, 30000);
-var quotesToDisplay = [];
+  // calls the printQuote function every 30 seconds.
+let myTimer = setInterval(printQuote, 30000);
+let quotesToDisplay = [];
 
 // Returns a random quote object from the array 'quotes' in quotes.js
 function getRandomQuote() {
   if (quotesToDisplay.length === 0) {
     quotesToDisplay = [...quotes];
   }
-
-  var randomIndex = Math.floor(Math.random() * quotesToDisplay.length);
-  var quote = quotesToDisplay[randomIndex];
-
+  const randomIndex = randonNumber(quotesToDisplay.length);
+  const quote = quotesToDisplay[randomIndex];
   if (quotesToDisplay.length !== 0) {
-    var quoteRemoved = quotesToDisplay.splice(randomIndex, 1);
-    console.log(quoteRemoved);
+    const quoteRemoved = quotesToDisplay.splice(randomIndex, 1);
+    console.log(quoteRemoved[0]);
   }
-
   return quote;
 }
 
 // Extra credit for exceeds rating: 
-// Returns a random number between 0 and including 255.
-function randonRGBNumber() {
-  return Math.floor(Math.random() * 256);
+  // Returns a random number between 0 and including 255.
+function randonNumber(number) {
+  return Math.floor(Math.random() * number);
 }
 
 // Extra credit for exceeds rating: 
-// Builds the rgb-color, changes the color of the body and button elements.
+  // Builds the rgb-color, changes the color of the body and button elements.
 function changeColorPage() {
   // Selecting body and button elements
-  var page = document.querySelector('body');
-  var button = document.getElementById('loadQuote');
+  const page = document.querySelector('body');
+  const button = document.getElementById('loadQuote');
 
-  // building rgb-color using the randomRGBNumber function
-  var rgbColor = 'rgb(' + randonRGBNumber();
-  rgbColor += ', ' + randonRGBNumber();
-  rgbColor += ', ' + randonRGBNumber() + ')';
+  // building rgb-color using the randomNumber function
+  const rgbColor = `rgb(${randonNumber(256)}, ${randonNumber(256)}, ${randonNumber(256)})`;
 
   // changing background color of body and button accordingly
   page.style.backgroundColor = rgbColor;
@@ -60,49 +53,20 @@ function printQuote() {
   changeColorPage();
 
   // getting random quote
-  var quote = getRandomQuote();
+  const quote = getRandomQuote();
 
   // selecting div element with the id quote-box
-  var quoteBox = document.getElementById('quote-box');
+  const quoteBox = document.getElementById('quote-box');
 
   // building html string
-  var html = '<p class="quote">' + quote.quote + '</p>';
-  html += '<p class="source">' + quote.source;
-  html += '<span class="citation">' + quote.citation + '</span>';
-  html += '<span class="year">' + quote.year + '</span>';
-  html += '<span class="tags">' + quote.tags + '</span>';
-  html += '</p>';   
+  const html = `
+    <p class="quote">${quote.quote}</p>
+    <p class="source">${quote.source}<span class="citation">${quote.citation}</span><span class="year">${quote.year}</span><span class="tags">${quote.tags}</span></p>
+  `;
 
   // displays HTML string to the page
   quoteBox.innerHTML = html;
 }
 
 // Prints random quote to page and changes background color of page.
-printQuote();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+document.getElementById('loadQuote').addEventListener("click", printQuote, false);
